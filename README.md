@@ -2,7 +2,7 @@
 
 This is a React crossword component extracted from the [Guardian Frontend application](https://github.com/guardian/frontend).
 
-[Package on NPM](https://www.npmjs.com/package/react-crossword).
+[Package on NPM](hhttps://www.npmjs.com/package/@guardian/react-crossword).
 
 ![Example of React Crossword](https://chriszetter.com/assets/react-crossword/react-crossword-example.png)
 
