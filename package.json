@@ -9,7 +9,7 @@
 		"fastdom": "0.8.5",
 		"lodash": "^4.17.11",
 		"qwery": "3.4.2",
-		"svg-inline-loader": "^0.8.0",
+		"svg-inline-loader": "^0.8.2",
 		"wolfy87-eventemitter": "~5.2.4"
 	},
 	"devDependencies": {
@@ -46,7 +46,7 @@
 		"sass-loader": "^7.1.0",
 		"sass-mq": "~3.3.2",
 		"style-loader": "^0.23.1",
-		"svg-inline-loader": "^0.8.0",
+		"svg-inline-loader": "^0.8.2",
 		"uglify-js": "^2.7.4",
 		"uglifyjs-webpack-plugin": "^1.2.5",
 		"webpack": "^4.1.1",
