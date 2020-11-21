@@ -10,7 +10,7 @@
 		"lodash": "^4.17.11",
 		"qwery": "3.4.2",
 		"svg-inline-loader": "^0.8.0",
-		"wolfy87-eventemitter": "~5.2.4"
+		"wolfy87-eventemitter": "~5.2.9"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
