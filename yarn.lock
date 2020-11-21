@@ -3054,9 +3054,10 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
-fastdom@0.8.5:
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/fastdom/-/fastdom-0.8.5.tgz#4066d73a8a7ca9d9ee6cef103043aa1a0e2f19dd"
+fastdom@0.8.6:
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/fastdom/-/fastdom-0.8.6.tgz#c7a53022a0b950b9027c8c9a5a066a469f3a05c5"
+  integrity sha1-x6UwIqC5ULkCfIyaWgZqRp86BcU=
 
 fastparse@^1.1.1:
   version "1.1.1"
