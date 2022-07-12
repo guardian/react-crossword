@@ -30,9 +30,7 @@ module.exports = {
     },
   },
   resolveLoader: {
-    modules: [
-      'node_modules',
-    ],
+    modules: ['node_modules'],
   },
   module: {
     rules: [
