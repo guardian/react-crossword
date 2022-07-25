@@ -24,6 +24,12 @@
         height: auto;
         background: none;
     }
+
+    @include mq($from:desktop, $and:'(orientation: portrait)') {
+        width: 100%;
+        clear: both;
+        padding-left: 0
+    }
 }
 
 .crossword__clues-header {

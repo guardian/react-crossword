@@ -42,6 +42,10 @@
     @include mq(tablet) {
         position: absolute;
     }
+
+    @include mq($from:desktop, $and:'(orientation: portrait)') {  
+        z-index: 1030;
+    }
 }
 
 .crossword__anagram-helper-inner {
@@ -74,6 +78,10 @@
 
     @include mq(tablet) {
         padding-top: 25%;
+    }
+
+    @include mq($from:desktop, $and:'(orientation: portrait)') {
+        padding-top: 15%;
     }
 }
 
@@ -146,6 +154,14 @@
         left: 5%;
         width: 50%;
         height: 100%;
+    }
+
+    @include mq($from:desktop, $and:'(orientation: portrait)') {
+        top: 25px;
+        left: 10px;
+        width: 175px;
+        height: 175px;
+
     }
 }
 
