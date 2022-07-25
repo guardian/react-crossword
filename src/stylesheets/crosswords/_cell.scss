@@ -40,6 +40,10 @@
             @include mq(tablet) {
                 font-size: 1.1px * $cells;
             }
+
+            @include mq($from:desktop, $and:'(orientation: portrait)') {  
+                font-size: ceil(1.2px * $cells);
+            }
         }
     }
 }

@@ -14,9 +14,17 @@
             }
         }
 
+        @include mq($from:desktop, $and:'(orientation: portrait)') {
+            padding-left: 0;
+        }
+
         .crossword__container__game {
             @include mq(tablet) {
                 margin-left: 0 - $size;
+            }
+
+            @include mq($from:desktop, $and:'(orientation: portrait)') {
+                margin-left: 0;
             }
         }
 
@@ -36,6 +44,11 @@
             @include mq(tablet) {
                 margin-left: 0 - $size;
                 width: $size;
+            }
+
+            @include mq($from:desktop, $and:'(orientation: portrait)') {
+                margin-left: 0;
+                width: auto;
             }
         }
 
@@ -91,6 +104,10 @@
             display: none;
         }
     }
+
+    @include mq($from:desktop, $and:'(orientation: portrait)') {
+        display: none;
+    }
 }
 
 .crossword__clues {
@@ -110,6 +127,21 @@
             display: table;
             table-layout: fixed;
             width: initial;
+        }
+    }
+
+    @include mq($from:desktop, $and:'(orientation: portrait)') {
+        clear: both;
+        padding-left: 0;
+        box-sizing: border-box;
+
+        noscript & {
+            width: 100%;
+        }
+
+        .crossword__container--accessible & {
+            display: block;
+            width: auto;
         }
     }
 
