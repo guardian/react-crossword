@@ -10,7 +10,7 @@ jobs:
     uses: guardian/.github/.github/workflows/sbt-node-snyk.yml@main
     with:
       DEBUG: true
-      ORG: guardian-mobile
+      ORG: guardian-dotcom-n2y
       SKIP_NODE: false
     secrets:
        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
