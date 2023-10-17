@@ -19,7 +19,7 @@ import {
   getClearableCellsForClue,
 } from 'crosswords/helpers';
 
-const stubCellWithValue = value => ({
+const stubCellWithValue = (value) => ({
   number: 1,
   isHighlighted: false,
   isEditable: false,
@@ -28,21 +28,19 @@ const stubCellWithValue = value => ({
   value,
 });
 
-const stubClue = options => Object.assign(
-  {
-    id: '',
-    number: '',
-    humanNumber: '',
-    group: [],
-    clue: '',
-    position: {},
-    separatorLocations: {},
-    direction: 'across',
-    length: 0,
-    solution: '',
-  },
-  options,
-);
+const stubClue = (options) => ({
+  id: '',
+  number: '',
+  humanNumber: '',
+  group: [],
+  clue: '',
+  position: {},
+  separatorLocations: {},
+  direction: 'across',
+  length: 0,
+  solution: '',
+  ...options,
+});
 
 const entryFixture = stubClue({
   id: '',
@@ -212,7 +210,7 @@ describe('Helpers', () => {
         const grid = buildGrid(5, 6, [], []);
 
         expect(
-          grid.every(column => column.every(({ isEditable }) => isEditable === false)),
+          grid.every((column) => column.every(({ isEditable }) => isEditable === false)),
         ).toBe(true);
       });
 

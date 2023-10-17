@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const round = x => Math.round(x * 100) / 100;
+const round = (x) => Math.round(x * 100) / 100;
 /**
  * Get coordinates for a letter as percentages.
  *

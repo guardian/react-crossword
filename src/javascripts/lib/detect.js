@@ -59,7 +59,7 @@ let pageVisibility = document.visibilityState
     || document.msVisibilityState
     || 'visible';
 
-const breakpointNames = breakpoints.map(breakpoint => breakpoint.name);
+const breakpointNames = breakpoints.map((breakpoint) => breakpoint.name);
 
 const findBreakpoint = (tweakpoint) => {
   let breakpointIndex = breakpointNames.indexOf(tweakpoint);
@@ -152,7 +152,7 @@ const getViewport = () => {
   };
 };
 
-const getBreakpoint = includeTweakpoint => (includeTweakpoint ? currentTweakpoint : currentBreakpoint);
+const getBreakpoint = (includeTweakpoint) => (includeTweakpoint ? currentTweakpoint : currentBreakpoint);
 
 const isBreakpoint = (criteria) => {
   const indexMin = criteria.min ? breakpointNames.indexOf(criteria.min) : 0;

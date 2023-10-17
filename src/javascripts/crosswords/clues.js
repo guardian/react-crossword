@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import bean from 'bean';
@@ -98,9 +99,9 @@ class Clues extends Component {
 
   render() {
     const headerClass = 'crossword__clues-header';
-    const cluesByDirection = direction => this.props.clues
-      .filter(clue => clue.entry.direction === direction)
-      .map(clue => (
+    const cluesByDirection = (direction) => this.props.clues
+      .filter((clue) => clue.entry.direction === direction)
+      .map((clue) => (
         <Clue
           ref={(clueRef) => {
             this[clue.entry.id] = clueRef;

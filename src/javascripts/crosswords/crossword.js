@@ -181,7 +181,7 @@ class Crossword extends Component {
         y,
       };
 
-      const isStartOfClue = sourceClue => !!sourceClue
+      const isStartOfClue = (sourceClue) => !!sourceClue
                 && sourceClue.position.x === x
                 && sourceClue.position.y === y;
 
@@ -202,23 +202,23 @@ class Crossword extends Component {
   }
 
   onCheat() {
-    this.allHighlightedClues().forEach(clue => this.cheat(clue));
+    this.allHighlightedClues().forEach((clue) => this.cheat(clue));
     this.saveGrid();
   }
 
   onCheck() {
     // 'Check this' checks single and grouped clues
-    this.allHighlightedClues().forEach(clue => this.check(clue));
+    this.allHighlightedClues().forEach((clue) => this.check(clue));
     this.saveGrid();
   }
 
   onSolution() {
-    this.props.data.entries.forEach(clue => this.cheat(clue));
+    this.props.data.entries.forEach((clue) => this.cheat(clue));
     this.saveGrid();
   }
 
   onCheckAll() {
-    this.props.data.entries.forEach(clue => this.check(clue));
+    this.props.data.entries.forEach((clue) => this.check(clue));
     this.saveGrid();
   }
 
@@ -253,7 +253,7 @@ class Crossword extends Component {
       this.setState({
         grid: mapGrid(this.state.grid, (cell, gridX, gridY) => {
           if (
-            cellsInFocus.some(c => c.x === gridX && c.y === gridY)
+            cellsInFocus.some((c) => c.x === gridX && c.y === gridY)
           ) {
             const previousValue = cell.value;
             cell.value = '';
@@ -562,7 +562,7 @@ class Crossword extends Component {
   }
 
   focusFirstCellInClueById(clueId) {
-    const newEntry = this.props.data.entries.find(val => val.id === clueId);
+    const newEntry = this.props.data.entries.find((val) => val.id === clueId);
     if (newEntry) {
       this.focusFirstCellInClue(newEntry);
     }
@@ -593,7 +593,7 @@ class Crossword extends Component {
   }
 
   allHighlightedClues() {
-    return this.props.data.entries.filter(clue => this.clueIsInFocusGroup(clue));
+    return this.props.data.entries.filter((clue) => this.clueIsInFocusGroup(clue));
   }
 
   clueIsInFocusGroup(clue) {
@@ -636,7 +636,7 @@ class Crossword extends Component {
     if (entry.solution) {
       this.setState({
         grid: mapGrid(this.state.grid, (cell, x, y) => {
-          if (cells.some(c => c.x === x && c.y === y)) {
+          if (cells.some((c) => c.x === x && c.y === y)) {
             const n = entry.direction === 'across'
               ? x - entry.position.x
               : y - entry.position.y;
@@ -666,12 +666,12 @@ class Crossword extends Component {
             /^.$/.test(cell.value) && cell.value !== solution
           );
         })
-        .map(cellAndSolution => cellAndSolution[0]);
+        .map((cellAndSolution) => cellAndSolution[0]);
 
       this.setState({
         grid: mapGrid(this.state.grid, (cell, gridX, gridY) => {
           if (
-            badCells.some(bad => bad.x === gridX && bad.y === gridY)
+            badCells.some((bad) => bad.x === gridX && bad.y === gridY)
           ) {
             const previousValue = cell.value;
             cell.value = '';
@@ -706,14 +706,14 @@ class Crossword extends Component {
     const focused = this.clueInFocus();
     return focused
       ? focused.group.some((id) => {
-        const entry = this.props.data.entries.find(e => e.id === id);
+        const entry = this.props.data.entries.find((e) => e.id === id);
         return entryHasCell(entry, x, y);
       })
       : false;
   }
 
   saveGrid() {
-    const entries = this.state.grid.map(row => row.map(cell => cell.value));
+    const entries = this.state.grid.map((row) => row.map((cell) => cell.value));
     this.props.saveGrid(this.props.id, entries);
   }
 
@@ -807,14 +807,15 @@ class Crossword extends Component {
           clueInFocus={focused}
           crossword={this}
         />
-        {this.instructions && this.instructions.length > 0 &&
+        {this.instructions && this.instructions.length > 0
+          && (
           <div className="crossword__instructions">
             <header className="instructions__title">
               Special instructions
-         </header>
+            </header>
             {this.instructions}
           </div>
-        }
+          )}
         <Clues
           clues={this.cluesData()}
           focussed={focused}
@@ -830,7 +831,7 @@ class Crossword extends Component {
 
 Crossword.defaultProps = {
   onMove: () => {},
-  loadGrid: id => loadGridState(id),
+  loadGrid: (id) => loadGridState(id),
   saveGrid: (id, grid) => saveGridState(id, grid),
 };
 

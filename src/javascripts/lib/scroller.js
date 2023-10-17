@@ -33,7 +33,7 @@ const scrollTo = (
   }, duration);
 };
 
-const scrollToElement = (element, duration = 0, easeFn, container) => {
+const scrollToElement = (element, easeFn, container, duration = 0) => {
   const top = bonzo(element).offset().top;
   scrollTo(top, duration, easeFn, container);
 };

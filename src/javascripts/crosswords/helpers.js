@@ -3,7 +3,7 @@ import flattenDeep from 'lodash/flattenDeep';
 import range from 'lodash/range';
 import uniqBy from 'lodash/uniqBy';
 
-const isAcross = clue => clue.direction === 'across';
+const isAcross = (clue) => clue.direction === 'across';
 
 const getLastCellInClue = (clue) => {
   const ax = {
@@ -33,19 +33,19 @@ const isLastCellInClue = (cell, clue) => {
 };
 
 const getNextClueInGroup = (entries, clue) => {
-  const newClueId = clue.group[clue.group.findIndex(id => id === clue.id) + 1];
+  const newClueId = clue.group[clue.group.findIndex((id) => id === clue.id) + 1];
 
-  return entries.find(entry => entry.id === newClueId);
+  return entries.find((entry) => entry.id === newClueId);
 };
 
 const getPreviousClueInGroup = (entries, clue) => {
-  const newClueId = clue.group[clue.group.findIndex(id => id === clue.id) - 1];
+  const newClueId = clue.group[clue.group.findIndex((id) => id === clue.id) - 1];
 
-  return entries.find(entry => entry.id === newClueId);
+  return entries.find((entry) => entry.id === newClueId);
 };
 
 const getGroupEntriesForClue = (entries, group) => group.reduce((acc, clueId) => {
-  const entry = entries.find(e => e.id === clueId);
+  const entry = entries.find((e) => e.id === clueId);
 
   if (entry) {
     acc.push(entry);
@@ -54,7 +54,7 @@ const getGroupEntriesForClue = (entries, group) => group.reduce((acc, clueId) =>
   return acc;
 }, []);
 
-const clueIsInGroup = clue => clue.group.length !== 1;
+const clueIsInGroup = (clue) => clue.group.length !== 1;
 
 const getAllSeparatorsForGroup = (clues) => {
   const k = {};
@@ -64,7 +64,7 @@ const getAllSeparatorsForGroup = (clues) => {
     const flattenedSeparators = flattenDeep(
       clues.map((clue) => {
         const separatorLocations = clue.separatorLocations[separator] || [];
-        const seps = separatorLocations.map(s => s + cnt);
+        const seps = separatorLocations.map((s) => s + cnt);
 
         cnt += clue.length;
 
@@ -77,11 +77,11 @@ const getAllSeparatorsForGroup = (clues) => {
   return k;
 };
 
-const getClueForGroupedEntries = clueGroup => clueGroup[0].clue;
+const getClueForGroupedEntries = (clueGroup) => clueGroup[0].clue;
 
-const getNumbersForGroupedEntries = clueGroup => clueGroup[0].humanNumber;
+const getNumbersForGroupedEntries = (clueGroup) => clueGroup[0].humanNumber;
 
-const getTtotalLengthOfGroup = clueGroup => clueGroup.reduce((total, clue) => total + clue.length, 0);
+const getTtotalLengthOfGroup = (clueGroup) => clueGroup.reduce((total, clue) => total + clue.length, 0);
 
 const getAnagramClueData = (entries, clue) => {
   if (clueIsInGroup(clue)) {
@@ -103,25 +103,25 @@ const getAnagramClueData = (entries, clue) => {
 
 const cluesAreInGroup = (clue, otherClue) => otherClue.group.includes(clue.id);
 
-const cellsForEntry = entry => (isAcross(entry)
-  ? range(entry.position.x, entry.position.x + entry.length).map(x => ({
+const cellsForEntry = (entry) => (isAcross(entry)
+  ? range(entry.position.x, entry.position.x + entry.length).map((x) => ({
     x,
     y: entry.position.y,
   }))
-  : range(entry.position.y, entry.position.y + entry.length).map(y => ({
+  : range(entry.position.y, entry.position.y + entry.length).map((y) => ({
     x: entry.position.x,
     y,
   })));
 
-const checkClueHasBeenAnswered = (grid, entry) => cellsForEntry(entry).every(position => /^.$/.test(grid[position.x][position.y].value));
+const checkClueHasBeenAnswered = (grid, entry) => cellsForEntry(entry).every((position) => /^.$/.test(grid[position.x][position.y].value));
 
-const otherDirection = direction => (direction === 'across' ? 'down' : 'across');
+const otherDirection = (direction) => (direction === 'across' ? 'down' : 'across');
 
 const cellsForClue = (entries, clue) => {
   if (clueIsInGroup(clue)) {
     const entriesForClue = getGroupEntriesForClue(entries, clue.group);
 
-    return flattenDeep(entriesForClue.map(entry => cellsForEntry(entry)));
+    return flattenDeep(entriesForClue.map((entry) => cellsForEntry(entry)));
   }
 
   return cellsForEntry(clue);
@@ -155,9 +155,9 @@ const getClearableCellsForClue = (grid, clueMap, entries, clue) => {
     const entriesForClue = getGroupEntriesForClue(entries, clue.group);
     return uniqBy(
       flattenDeep(
-        entriesForClue.map(entry => getClearableCellsForEntry(grid, clueMap, entries, entry)),
+        entriesForClue.map((entry) => getClearableCellsForEntry(grid, clueMap, entries, entry)),
       ),
-      cell => [cell.x, cell.y].join(),
+      (cell) => [cell.x, cell.y].join(),
     );
   }
   return getClearableCellsForEntry(grid, clueMap, entries, clue);
@@ -167,7 +167,7 @@ const getClearableCellsForClue = (grid, clueMap, entries, clue) => {
  * Builds the initial state of the grid given the number of rows, columns, and a list of clues.
  */
 const buildGrid = (rows, columns, entries, savedState) => {
-  const grid = range(columns).map(x => range(rows).map(y => ({
+  const grid = range(columns).map((x) => range(rows).map((y) => ({
     isHighlighted: false,
     isEditable: false,
     isError: false,
@@ -228,7 +228,7 @@ const buildSeparatorMap = (clues) => {
   };
 
   return clues
-    .map(clue => Object.keys(clue.separatorLocations).map((separatorStr) => {
+    .map((clue) => Object.keys(clue.separatorLocations).map((separatorStr) => {
       const separator = separatorStr;
       const locations = clue.separatorLocations[separator];
 
@@ -266,10 +266,10 @@ const buildSeparatorMap = (clues) => {
     }, {});
 };
 
-const entryHasCell = (entry, x, y) => cellsForEntry(entry).some(cell => cell.x === x && cell.y === y);
+const entryHasCell = (entry, x, y) => cellsForEntry(entry).some((cell) => cell.x === x && cell.y === y);
 
 /** Can be used for width or height, as the cell height == cell width */
-const gridSize = cells => cells * (constants.cellSize + constants.borderSize) + constants.borderSize;
+const gridSize = (cells) => cells * (constants.cellSize + constants.borderSize) + constants.borderSize;
 
 const mapGrid = (grid, f) => grid.map((col, x) => col.map((cell, y) => f(cell, x, y)));
 

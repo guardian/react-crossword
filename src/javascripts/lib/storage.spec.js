@@ -46,7 +46,7 @@ const testStorage = (storageName, fn) => {
     // jsdom doesn't support localStorage/ sessionStorage
     window[`${storageName}Storage`] = {
       getItem: jest.fn((key) => {
-        const item = IO.find(io => io.key === key);
+        const item = IO.find((io) => io.key === key);
         return item && item.expected;
       }),
       setItem: jest.fn(),
@@ -106,13 +106,13 @@ const testStorage = (storageName, fn) => {
   });
 
   test(`${storageName} - get() with expired item`, () => {
-    IO.filter(item => item.options && item.options.expires).forEach(
+    IO.filter((item) => item.options && item.options.expires).forEach(
       (expired) => {
         const { key } = expired;
         const OriginalDate = global.Date;
 
         global.Date = jest.fn(
-          dateString => new OriginalDate(dateString || '2100-01-02'),
+          (dateString) => new OriginalDate(dateString || '2100-01-02'),
         );
 
         expect(engine.get(key)).toEqual(null);
@@ -125,13 +125,13 @@ const testStorage = (storageName, fn) => {
   });
 
   test(`${storageName} - get() with non-expired item`, () => {
-    IO.filter(item => item.options && item.options.expires).forEach(
+    IO.filter((item) => item.options && item.options.expires).forEach(
       (expired) => {
         const { key, data } = expired;
         const OriginalDate = global.Date;
 
         global.Date = jest.fn(
-          dateString => new OriginalDate(dateString || '2099-01-01'),
+          (dateString) => new OriginalDate(dateString || '2099-01-01'),
         );
 
         expect(engine.get(key)).toEqual(data);

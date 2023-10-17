@@ -48,6 +48,7 @@ class ConfirmButton extends Component {
       className,
     };
 
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <button {...props}>{inner}</button>;
   }
 }

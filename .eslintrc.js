@@ -23,6 +23,7 @@ module.exports = {
     "react/button-has-type": "off",
     "react/no-multi-comp": "off",
     "react/no-find-dom-node": "off",
-    "react/no-access-state-in-setstate": "off"
+    "react/no-access-state-in-setstate": "off",
+    "react/no-unused-class-component-methods": "off"
   }
 };

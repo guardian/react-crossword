@@ -36,8 +36,8 @@ class AnagramHelper extends Component {
   // eslint-disable-next-line class-methods-use-this
   shuffleWord(word, entries) {
     const wordEntries = entries
-      .map(entry => entry.value.toLowerCase())
-      .filter(entry => word.includes(entry))
+      .map((entry) => entry.value.toLowerCase())
+      .filter((entry) => word.includes(entry))
       .filter(Boolean)
       .sort();
 
@@ -94,9 +94,7 @@ class AnagramHelper extends Component {
       this.props.entries,
       this.props.focussedEntry,
     );
-    return cells.map(coords => Object.assign({}, this.props.grid[coords.x][coords.y], {
-      key: `${coords.x},${coords.y}`,
-    }));
+    return cells.map((coords) => ({ ...this.props.grid[coords.x][coords.y], key: `${coords.x},${coords.y}` }));
   }
 
   render() {
@@ -125,6 +123,7 @@ class AnagramHelper extends Component {
         data-link-name="Anagram Helper"
       >
         <div className="crossword__anagram-helper-inner">{inner}</div>
+        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button
           className="button button--large button--tertiary crossword__anagram-helper-close"
           onClick={this.props.close.bind(this.props.crossword)}
@@ -138,7 +137,7 @@ class AnagramHelper extends Component {
           onClick={this.reset.bind(this)}
           data-link-name="Start Again"
         >
-                    start again
+          start again
         </button>
         <button
           className={`button button--large ${
@@ -147,7 +146,7 @@ class AnagramHelper extends Component {
           onClick={this.shuffle.bind(this)}
           data-link-name="Shuffle"
         >
-                    shuffle
+          shuffle
         </button>
         <CluePreview
           clue={clue}

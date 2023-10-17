@@ -80,7 +80,7 @@ const createSeparator = (x, y, separatorDescription) => {
   }
 };
 
-export const Grid = (props) => {
+export function Grid(props) {
   const getSeparators = (x, y) => props.separators[clueMapKey(x, y)];
 
   const handleSelect = (x, y) => props.crossword.onSelect(x, y);
@@ -90,34 +90,33 @@ export const Grid = (props) => {
   const cells = [];
   let separators = [];
 
-  const range = n => Array.from({ length: n }, (value, key) => key);
+  const range = (n) => Array.from({ length: n }, (value, key) => key);
 
   // This is needed to appease ESLint (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md#false-positives-sfc)
   const cellsIn = props.cells;
 
-  range(props.rows).forEach(y => range(props.columns).forEach((x) => {
+  range(props.rows).forEach((y) => range(props.columns).forEach((x) => {
     const cellProps = cellsIn[x][y];
 
     if (cellProps.isEditable) {
       const isHighlighted = props.crossword.isHighlighted(x, y);
       cells.push(
         <GridCell
-          {...Object.assign(
-            {},
-            cellProps,
-            {
-              handleSelect,
-              x,
-              y,
-              key: `cell_${x}_${y}`,
-              isHighlighted,
-              isFocussed:
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...({
+
+            ...cellProps,
+            handleSelect,
+            x,
+            y,
+            key: `cell_${x}_${y}`,
+            isHighlighted,
+            isFocussed:
                                     props.focussedCell
                                     && x === props.focussedCell.x
                                     && y === props.focussedCell.y,
-            },
-            this,
-          )}
+            ...this,
+          })}
         />,
       );
 
@@ -146,4 +145,4 @@ export const Grid = (props) => {
       <g className="crossword__grid__separators">{separators}</g>
     </svg>
   );
-};
+}

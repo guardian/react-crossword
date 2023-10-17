@@ -11,7 +11,7 @@ bonzo.aug({
 // #? Use of `Node` throughout this file may need a second look?
 const $ = (selector, context) => bonzo(qwery(selector, context));
 
-$.create = s => bonzo(bonzo.create(s));
+$.create = (s) => bonzo(bonzo.create(s));
 
 // #? duplicated in lib/closest.js?
 $.ancestor = (el, className) => {
@@ -36,5 +36,4 @@ $.forEachElement = (selector, fn) => {
 };
 
 // #es6 can be named exports once we're es6-only
-// eslint-disable-next-line guardian-frontend/no-default-export
 export default $;

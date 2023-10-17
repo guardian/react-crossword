@@ -1,6 +1,6 @@
 import { local as localStorage } from 'lib/storage';
 
-const localStorageKey = id => `crosswords.${id}`;
+const localStorageKey = (id) => `crosswords.${id}`;
 
 const saveGridState = (id, grid) => {
   /* Take only the entries from the grid. Other state information like what
@@ -12,6 +12,6 @@ const saveGridState = (id, grid) => {
   }
 };
 
-const loadGridState = id => localStorage.get(localStorageKey(id));
+const loadGridState = (id) => localStorage.get(localStorageKey(id));
 
 export { saveGridState, loadGridState };

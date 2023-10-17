@@ -50,10 +50,10 @@ const CASES = [
 
 describe('Anagram Helper', () => {
   test('marks the correct letters as entered', () => {
-    const sort = x => x.value + x.entered.toString();
+    const sort = (x) => x.value + x.entered.toString();
 
     CASES.forEach((testCase) => {
-      const entries = testCase.entries.map(e => ({ value: e }));
+      const entries = testCase.entries.map((e) => ({ value: e }));
       const result = new AnagramHelper().shuffleWord(
         testCase.word,
         entries,
