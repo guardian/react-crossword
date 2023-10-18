@@ -1,59 +1,68 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const path = require('path');
+// Generated using webpack-cli https://github.com/webpack/webpack-cli
 
-module.exports = {
-  mode: 'production',
+const path = require("path");
+
+const isProduction = process.env.NODE_ENV === "production";
+
+const stylesHandler = "style-loader";
+
+const config = {
   entry: path.join(
     __dirname,
-    'src',
-    'javascripts',
-    'crosswords',
-    'crossword.js',
+    "src",
+    "javascripts",
+    "crosswords",
+    "crossword.js"
   ),
   externals: {
-    react: 'react',
-    'react-dom': 'react-dom',
+    react: "react",
+    "react-dom": "react-dom",
   },
   output: {
-    filename: 'index.js',
-    path: path.join(__dirname, 'lib'),
-    libraryTarget: 'commonjs2',
+    filename: "index.js",
+    path: path.resolve(__dirname, "lib"),
+    libraryTarget: "commonjs2",
   },
   resolve: {
     modules: [
-      path.join(__dirname, 'src', 'javascripts'),
-      path.join(__dirname, 'src', 'stylesheets'),
-      'node_modules', // default location, but we're overiding above, so it needs to be explicit
+      path.join(__dirname, "src", "javascripts"),
+      path.join(__dirname, "src", "stylesheets"),
+      "node_modules", // default location, but we're overiding above, so it needs to be explicit
     ],
     alias: {
-      svgs: path.join(__dirname, 'src', 'svgs'),
+      svgs: path.join(__dirname, "src", "svgs"),
     },
   },
-  resolveLoader: {
-    modules: [
-      'node_modules',
-    ],
+  devServer: {
+    open: true,
+    host: "localhost",
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
+        test: /\.(js|jsx)$/i,
+        loader: "babel-loader",
       },
       {
-        test: /\.svg$/,
-        exclude: /node_modules/,
-        loader: 'svg-inline-loader',
+        test: /\.s[ac]ss$/i,
+        use: [stylesHandler, "css-loader", "sass-loader"],
       },
       {
-        test: /\.scss$/,
-        use: [
-          'style-loader', // creates style nodes from JS strings
-          'css-loader', // translates CSS into CommonJS
-          'sass-loader', // compiles Sass to CSS, using Node Sass by default
-        ],
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: "asset",
       },
+
+      // Add your rules for custom modules here
+      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
+};
+
+module.exports = () => {
+  if (isProduction) {
+    config.mode = "production";
+  } else {
+    config.mode = "development";
+  }
+  return config;
 };

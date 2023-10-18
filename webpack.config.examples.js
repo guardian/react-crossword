@@ -1,24 +1,24 @@
-const path = require('path');
-const baseConfig = require('./webpack.config');
+const path = require("path");
+const baseConfig = require("./webpack.config");
 
 module.exports = {
-  mode: 'development',
+  ...baseConfig(),
+  mode: "production",
   entry: {
-    examples: path.join(
-      __dirname,
-      'examples',
-      'exampleCrossword.js',
-    ),
+    examples: path.join(__dirname, "examples", "exampleCrossword.js"),
   },
   devServer: {
-    contentBase: path.join(__dirname, './examples/'),
+    static: path.join(__dirname, "examples/"),
     port: 3000,
+    open: true,
+    client: {
+      overlay: false,
+    },
   },
   output: {
-    filename: 'examples.js',
-    path: path.join(__dirname, 'examples', 'lib'),
+    filename: "examples.js",
+    path: path.join(__dirname, "examples", "lib"),
   },
-  resolve: baseConfig.resolve,
-  resolveLoader: baseConfig.resolveLoader,
-  module: baseConfig.module,
 };
+
+console.log(path.join(__dirname, "examples/"));
