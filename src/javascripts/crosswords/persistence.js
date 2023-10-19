@@ -1,4 +1,4 @@
-import { local as localStorage } from 'lib/storage';
+import { local as localStorage } from "../lib/storage";
 
 const localStorageKey = (id) => `crosswords.${id}`;
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Crossword from "crosswords/crossword";
+import Crossword from "../src/javascripts/crosswords/crossword";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
