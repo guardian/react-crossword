@@ -8,5 +8,5 @@ node_modules
 .eslintcache
 *-spec-run
 yarn-error.log
-.parcel-cache
-dist
+/.parcel-cache
+/dist
