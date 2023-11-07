@@ -8,5 +8,7 @@ node_modules
 .eslintcache
 *-spec-run
 yarn-error.log
-/.parcel-cache
+.parcel-cache/
+.parcel-cache/data.mdb
+/parcel-cache/lock.mdb
 /dist
