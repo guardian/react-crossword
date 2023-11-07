@@ -10,5 +10,5 @@ node_modules
 yarn-error.log
 .parcel-cache/
 .parcel-cache/data.mdb
-/parcel-cache/lock.mdb
+.parcel-cache/lock.mdb
 /dist
