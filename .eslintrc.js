@@ -5,9 +5,6 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  settings: {
-    'import/resolver': 'webpack',
-  },
   rules: {
     "consistent-return": "off",
     "max-len": "off",
