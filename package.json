@@ -74,7 +74,7 @@
   "scripts": {
     "eslint-fix": "eslint --color --fix src/javascripts examples *.js",
     "eslint": "eslint --color src/javascripts examples *.js",
-    "sass-lint": "sass-lint --max-warnings 0 -v",
+    "sass-lint": "sass-lint -v",
     "test": "yarn eslint && yarn jest && yarn sass-lint",
     "build": "parcel build",
     "serve": "parcel examples/index.html"

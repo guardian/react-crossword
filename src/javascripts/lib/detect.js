@@ -1,46 +1,46 @@
-import mediator from "./mediator";
+import mediator from './mediator';
 
 // These should match those defined in:
 //   stylesheets/_vars.scss
 //   common/app/layout/Breakpoint.scala
 const breakpoints = [
   {
-    name: "mobile",
+    name: 'mobile',
     isTweakpoint: false,
     width: 0,
   },
   {
-    name: "mobileMedium",
+    name: 'mobileMedium',
     isTweakpoint: true,
     width: 375,
   },
   {
-    name: "mobileLandscape",
+    name: 'mobileLandscape',
     isTweakpoint: true,
     width: 480,
   },
   {
-    name: "phablet",
+    name: 'phablet',
     isTweakpoint: true,
     width: 660,
   },
   {
-    name: "tablet",
+    name: 'tablet',
     isTweakpoint: false,
     width: 740,
   },
   {
-    name: "desktop",
+    name: 'desktop',
     isTweakpoint: false,
     width: 980,
   },
   {
-    name: "leftCol",
+    name: 'leftCol',
     isTweakpoint: true,
     width: 1140,
   },
   {
-    name: "wide",
+    name: 'wide',
     isTweakpoint: false,
     width: 1300,
   },
@@ -50,15 +50,14 @@ let currentBreakpoint;
 let currentTweakpoint;
 let supportsPushState;
 // #?: Consider dropping support for vendor-specific implementations
-let pageVisibility =
-  document.visibilityState ||
+let pageVisibility = document.visibilityState
   // $FlowFixMe
-  document.webkitVisibilityState ||
+  || document.webkitVisibilityState
   // $FlowFixMe
-  document.mozVisibilityState ||
+  || document.mozVisibilityState
   // $FlowFixMe
-  document.msVisibilityState ||
-  "visible";
+  || document.msVisibilityState
+  || 'visible';
 
 const breakpointNames = breakpoints.map((breakpoint) => breakpoint.name);
 
@@ -93,10 +92,10 @@ const updateBreakpoints = () => {
   // The implementation for browsers that don't support window.matchMedia is simpler,
   // but relies on (1) the resize event, (2) layout and (3) hidden generated content
   // on a pseudo-element
-  const bodyStyle = window.getComputedStyle(document.body, "::after");
+  const bodyStyle = window.getComputedStyle(document.body, '::after');
   const breakpointName = bodyStyle.content.substring(
     1,
-    bodyStyle.content.length - 1
+    bodyStyle.content.length - 1,
   );
   const breakpointIndex = breakpointNames.indexOf(breakpointName);
   updateBreakpoint(breakpoints[breakpointIndex]);
@@ -108,12 +107,11 @@ const initMediaQueryListeners = () => {
     // to facilitate the breakpoint/tweakpoint logic.
     const minWidth = `(min-width: ${bp.width}px)`;
 
-    bp.mql =
-      index < bps.length - 1
-        ? window.matchMedia(
-            `${minWidth} and (max-width: ${bps[index + 1].width - 1}px)`
-          )
-        : window.matchMedia(minWidth);
+    bp.mql = index < bps.length - 1
+      ? window.matchMedia(
+        `${minWidth} and (max-width: ${bps[index + 1].width - 1}px)`,
+      )
+      : window.matchMedia(minWidth);
 
     bp.listener = onMatchingBreakpoint.bind(bp);
 
@@ -128,18 +126,18 @@ const initMediaQueryListeners = () => {
 };
 
 const initBreakpoints = () => {
-  if ("matchMedia" in window) {
+  if ('matchMedia' in window) {
     initMediaQueryListeners();
   } else {
     updateBreakpoints();
-    mediator.on("window:throttledResize", updateBreakpoints);
+    mediator.on('window:throttledResize', updateBreakpoints);
   }
 };
 
 const getViewport = () => {
   if (
-    !window.innerWidth ||
-    !(document && document.body && document.body.clientWidth)
+    !window.innerWidth
+    || !(document && document.body && document.body.clientWidth)
   ) {
     return {
       height: 0,
@@ -153,8 +151,7 @@ const getViewport = () => {
   };
 };
 
-const getBreakpoint = (includeTweakpoint) =>
-  includeTweakpoint ? currentTweakpoint : currentBreakpoint;
+const getBreakpoint = (includeTweakpoint) => (includeTweakpoint ? currentTweakpoint : currentBreakpoint);
 
 const isBreakpoint = (criteria) => {
   const indexMin = criteria.min ? breakpointNames.indexOf(criteria.min) : 0;
@@ -162,7 +159,7 @@ const isBreakpoint = (criteria) => {
     ? breakpointNames.indexOf(criteria.max)
     : breakpointNames.length - 1;
   const indexCur = breakpointNames.indexOf(
-    currentTweakpoint || currentBreakpoint
+    currentTweakpoint || currentBreakpoint,
   );
 
   return indexMin <= indexCur && indexCur <= indexMax;
@@ -185,9 +182,8 @@ const isIOS = () => /(iPad|iPhone|iPod touch)/i.test(navigator.userAgent);
 
 const isAndroid = () => /Android/i.test(navigator.userAgent);
 
-const hasTouchScreen = () =>
-  "ontouchstart" in window ||
-  (window.DocumentTouch && document instanceof window.DocumentTouch);
+const hasTouchScreen = () => 'ontouchstart' in window
+  || (window.DocumentTouch && document instanceof window.DocumentTouch);
 
 const hasPushStateSupport = () => {
   if (supportsPushState !== undefined) {
@@ -198,8 +194,7 @@ const hasPushStateSupport = () => {
     supportsPushState = true;
     // Android stock browser lies about its HistoryAPI support.
     if (window.navigator.userAgent.match(/Android/i)) {
-      supportsPushState =
-        !!window.navigator.userAgent.match(/(Chrome|Firefox)/i);
+      supportsPushState = !!window.navigator.userAgent.match(/(Chrome|Firefox)/i);
     }
   }
 
@@ -208,29 +203,29 @@ const hasPushStateSupport = () => {
 
 const initPageVisibility = () => {
   const onchange = (evt = window.event) => {
-    const v = "visible";
+    const v = 'visible';
     const evtMap = {
       focus: v,
       focusin: v,
       pageshow: v,
-      blur: "hidden",
-      focusout: "hidden",
-      pagehide: "hidden",
+      blur: 'hidden',
+      focusout: 'hidden',
+      pagehide: 'hidden',
     };
 
     if (evt.type in evtMap) {
       pageVisibility = evtMap[evt.type];
     } else {
-      pageVisibility = window && window.hidden ? "hidden" : "visible";
+      pageVisibility = window && window.hidden ? 'hidden' : 'visible';
     }
   };
 
   // Standards:
-  if ("hidden" in document) {
-    document.addEventListener("visibilitychange", onchange);
-  } else if ("msHidden" in document) {
-    document.addEventListener("msvisibilitychange", onchange);
-  } else if ("onfocusin" in document) {
+  if ('hidden' in document) {
+    document.addEventListener('visibilitychange', onchange);
+  } else if ('msHidden' in document) {
+    document.addEventListener('msvisibilitychange', onchange);
+  } else if ('onfocusin' in document) {
     // IE 9 and lower:
     window.onfocusout = onchange;
     window.onfocusin = onchange;
@@ -243,22 +238,21 @@ const initPageVisibility = () => {
   }
 };
 
-const pageVisible = () => pageVisibility === "visible";
+const pageVisible = () => pageVisibility === 'visible';
 
 const isEnhanced = () => window.guardian.isEnhanced;
 
-const getReferrer = () => document.referrer || "";
+const getReferrer = () => document.referrer || '';
 
 const getUserAgent = (() => {
   if (!navigator && !navigator.userAgent) {
-    return "";
+    return '';
   }
 
   const ua = navigator.userAgent;
   let tem;
-  let M =
-    ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) ||
-    [];
+  let M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i)
+    || [];
 
   if (M && M[1] && /trident/i.test(M[1])) {
     tem = /\brv[ :]+(\d+)/g.exec(ua);
@@ -268,7 +262,7 @@ const getUserAgent = (() => {
     }
   }
 
-  if (M && M[1] === "Chrome") {
+  if (M && M[1] === 'Chrome') {
     tem = ua.match(/\bOPR\/(\d+)/);
 
     if (tem && tem[1]) {
@@ -276,8 +270,7 @@ const getUserAgent = (() => {
     }
   }
 
-  M =
-    M && M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, "-?"];
+  M = M && M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
   tem = ua.match(/version\/(\d+)/i);
 
   if (tem && tem[1]) {

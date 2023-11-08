@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import { easingFunctions, createEasing } from 'lib/easing';
+import { easingFunctions, createEasing } from './easing';
 
 const chance = new Chance();
 jest.useRealTimers();

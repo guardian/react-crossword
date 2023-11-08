@@ -1,4 +1,4 @@
-import { local, session } from 'lib/storage';
+import { local, session } from './storage';
 
 const IO = [
   {

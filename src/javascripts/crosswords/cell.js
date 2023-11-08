@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { gridSize } from "./helpers";
-import { constants } from "./constants";
-import { classNames } from "./classNames";
+import React, { Component } from 'react';
+import { gridSize } from './helpers';
+import { constants } from './constants';
+import { classNames } from './classNames';
 
 class Cell extends Component {
   shouldComponentUpdate(nextProps) {
     return (
-      this.props.value !== nextProps.value ||
-      this.props.isFocussed !== nextProps.isFocussed ||
-      this.props.isHighlighted !== nextProps.isHighlighted ||
-      this.props.isError !== nextProps.isError
+      this.props.value !== nextProps.value
+      || this.props.isFocussed !== nextProps.isFocussed
+      || this.props.isHighlighted !== nextProps.isHighlighted
+      || this.props.isError !== nextProps.isError
     );
   }
 
@@ -44,9 +44,9 @@ class Cell extends Component {
           y={top + constants.cellSize * 0.675}
           key="entry"
           className={classNames({
-            "crossword__cell-text": true,
-            "crossword__cell-text--focussed": this.props.isFocussed,
-            "crossword__cell-text--error": this.props.isError,
+            'crossword__cell-text': true,
+            'crossword__cell-text--focussed': this.props.isFocussed,
+            'crossword__cell-text--error': this.props.isError,
           })}
           textAnchor="middle"
         >
@@ -64,8 +64,8 @@ class Cell extends Component {
           height={constants.cellSize}
           className={classNames({
             crossword__cell: true,
-            "crossword__cell--focussed": this.props.isFocussed,
-            "crossword__cell--highlighted": this.props.isHighlighted,
+            'crossword__cell--focussed': this.props.isFocussed,
+            'crossword__cell--highlighted': this.props.isHighlighted,
           })}
         />
         {cellNumber}

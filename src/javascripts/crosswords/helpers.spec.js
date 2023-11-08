@@ -17,7 +17,7 @@ import {
   cluesAreInGroup,
   checkClueHasBeenAnswered,
   getClearableCellsForClue,
-} from 'crosswords/helpers';
+} from './helpers';
 
 const stubCellWithValue = (value) => ({
   number: 1,

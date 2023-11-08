@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import closeCentralIcon from "../../../svgs/close.svg";
-import { cellsForClue, getAnagramClueData } from "../helpers";
-import shuffle from "lodash/shuffle";
-import { ClueInput } from "./clue-input";
-import { CluePreview } from "./clue-preview";
-import { Ring } from "./ring";
+import React, { Component } from 'react';
+import shuffle from 'lodash/shuffle';
+import closeCentralIcon from '../../../svgs/close.svg';
+import { cellsForClue, getAnagramClueData } from '../helpers';
+import { ClueInput } from './clue-input';
+import { CluePreview } from './clue-preview';
+import { Ring } from './ring';
 
 class AnagramHelper extends Component {
   constructor() {
     super();
     this.state = {
       letters: [],
-      clueInput: "",
+      clueInput: '',
       showInput: true,
     };
   }
@@ -44,7 +44,7 @@ class AnagramHelper extends Component {
     return shuffle(
       word
         .trim()
-        .split("")
+        .split('')
         .sort()
         .reduce(
           (acc, letter) => {
@@ -62,8 +62,8 @@ class AnagramHelper extends Component {
           {
             letters: [],
             entries: wordEntries,
-          }
-        ).letters
+          },
+        ).letters,
     );
   }
 
@@ -79,7 +79,7 @@ class AnagramHelper extends Component {
   reset() {
     if (this.state.clueInput) {
       this.setState({
-        clueInput: "",
+        clueInput: '',
         showInput: true,
       });
     }
@@ -103,7 +103,7 @@ class AnagramHelper extends Component {
     };
     const clue = getAnagramClueData(
       this.props.entries,
-      this.props.focussedEntry
+      this.props.focussedEntry,
     );
 
     const inner = this.state.showInput ? (
@@ -132,7 +132,7 @@ class AnagramHelper extends Component {
         />
         <button
           className={`button button--large ${
-            !this.state.clueInput ? "button--tertiary" : ""
+            !this.state.clueInput ? 'button--tertiary' : ''
           }`}
           onClick={this.reset.bind(this)}
           data-link-name="Start Again"
@@ -141,7 +141,7 @@ class AnagramHelper extends Component {
         </button>
         <button
           className={`button button--large ${
-            this.canShuffle() ? "" : "button--tertiary"
+            this.canShuffle() ? '' : 'button--tertiary'
           }`}
           onClick={this.shuffle.bind(this)}
           data-link-name="Shuffle"

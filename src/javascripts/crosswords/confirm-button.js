@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { classNames } from "./classNames";
+import React, { Component } from 'react';
+import { classNames } from './classNames';
 
 const timeout = 2000;
 
@@ -36,13 +36,12 @@ class ConfirmButton extends Component {
 
     const classes = {};
     const className = classNames(
-      ((classes["crossword__controls__button--confirm"] =
-        this.state.confirming),
+      ((classes['crossword__controls__button--confirm'] = this.state.confirming),
       (classes[this.props.className] = true),
-      classes)
+      classes),
     );
     const props = {
-      "data-link-name": this.props["data-link-name"],
+      'data-link-name': this.props['data-link-name'],
       onClick: this.confirm.bind(this),
       className,
     };

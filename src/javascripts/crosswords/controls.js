@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { ConfirmButton } from "./confirm-button";
+import React, { Component } from 'react';
+import { ConfirmButton } from './confirm-button';
 
-const buttonClassName = "button button--primary";
-const buttonCurrentClassName = "button--crossword--current";
-const buttonGenericClassName = "button--secondary";
+const buttonClassName = 'button button--primary';
+const buttonCurrentClassName = 'button--crossword--current';
+const buttonGenericClassName = 'button--secondary';
 
 class Controls extends Component {
   render() {
@@ -22,7 +22,7 @@ class Controls extends Component {
         key="clear"
         data-link-name="Clear all"
         text="Clear all"
-      />
+      />,
     );
 
     if (hasSolutions) {
@@ -33,7 +33,7 @@ class Controls extends Component {
           key="solution"
           data-link-name="Reveal all"
           text="Reveal all"
-        />
+        />,
       );
       controls.grid.unshift(
         <ConfirmButton
@@ -42,7 +42,7 @@ class Controls extends Component {
           key="checkAll"
           data-link-name="Check all"
           text="Check all"
-        />
+        />,
       );
     }
 
@@ -52,13 +52,13 @@ class Controls extends Component {
         <button
           className={`${buttonClassName} ${buttonCurrentClassName}`}
           onClick={this.props.crossword.onClearSingle.bind(
-            this.props.crossword
+            this.props.crossword,
           )}
           key="clear-single"
           data-link-name="Clear this"
         >
           Clear this
-        </button>
+        </button>,
       );
 
       // anagram helper
@@ -66,13 +66,13 @@ class Controls extends Component {
         <button
           className={`${buttonClassName} ${buttonCurrentClassName}`}
           onClick={this.props.crossword.onToggleAnagramHelper.bind(
-            this.props.crossword
+            this.props.crossword,
           )}
           key="anagram"
           data-link-name="Show anagram helper"
         >
           Anagram helper
-        </button>
+        </button>,
       );
 
       if (hasSolutions) {
@@ -84,7 +84,7 @@ class Controls extends Component {
             data-link-name="Reveal this"
           >
             Reveal this
-          </button>
+          </button>,
         );
         controls.clue.unshift(
           <button
@@ -94,7 +94,7 @@ class Controls extends Component {
             data-link-name="Check this"
           >
             Check this
-          </button>
+          </button>,
         );
       }
     }
