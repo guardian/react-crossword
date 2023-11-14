@@ -44,7 +44,7 @@ const testStorage = (storageName, fn) => {
 
   beforeAll(() => {
     // jsdom doesn't support localStorage/ sessionStorage
-    window[`${storageName}Storage`] = {
+    const localStorageMock = {
       getItem: jest.fn((key) => {
         const item = IO.find((io) => io.key === key);
         return item && item.expected;
@@ -53,7 +53,7 @@ const testStorage = (storageName, fn) => {
       removeItem: jest.fn(),
     };
 
-    engine.storage = window[`${storageName}Storage`];
+    engine.storage = localStorageMock;
   });
 
   beforeEach(() => {

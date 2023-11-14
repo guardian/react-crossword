@@ -9,10 +9,16 @@
     "fastdom": "1.0.11",
     "lodash": "^4.17.21",
     "qwery": "4.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "wolfy87-eventemitter": "~5.2.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
     "@parcel/transformer-sass": "2.10.0",
+    "babel-jest": "^29.7.0",
     "chance": "1.1.11",
     "eslint": "^8.51.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -23,35 +29,27 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-jsdom-global": "^4.0.0",
     "node-sass": "^9.0.0",
-    "parcel": "^2.10.0",
-    "prettier": "3.0.3",
+    "parcel": "2.10.0",
     "process": "^0.11.10",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "sass": "^1.69.3",
     "sass-lint": "~1.13.1",
-    "sass-mq": "~6.0.0",
-    "uglify-js": "^3.17.4"
-  },
-  "peerDependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "sass-mq": "~6.0.0"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.3"
   },
   "jest": {
-    "roots": [
-      "<rootDir>/src/javascripts"
-    ],
     "moduleDirectories": [
       "<rootDir>/src/javascripts",
       "node_modules"
     ],
     "moduleNameMapper": {
-      "^(.*)\\.svg$": "<rootDir>/__mocks__/svgMock.js"
+      "^.+\\.svg": "<rootDir>/__mocks__/svgMock.js"
     },
-    "testEnvironment": "jest-environment-jsdom-global"
+    "testEnvironment": "jest-environment-jsdom-global",
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",

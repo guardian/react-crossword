@@ -2,16 +2,6 @@ import sortBy from 'lodash/sortBy';
 
 import { AnagramHelper } from './main';
 
-jest.mock('react', () => ({
-  Component: function Component() {},
-}));
-
-jest.mock('react-dom', () => ({
-  findDOMNode: () => ({
-    focus: () => {},
-  }),
-}));
-
 const CASES = [
   {
     entries: ['', '', '', '', 'l', '', 'e'],

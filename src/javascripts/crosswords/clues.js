@@ -1,6 +1,5 @@
 // eslint-disable-next-line max-classes-per-file
-import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
+import React, { Component, createRef } from 'react';
 import bean from 'bean';
 import fastdom from 'fastdom';
 import { classNames } from './classNames';
@@ -47,10 +46,11 @@ class Clues extends Component {
     this.state = {
       showGradient: true,
     };
+    this.cluesRef = createRef(this.clues);
   }
 
   componentDidMount() {
-    this.$cluesNode = findDOMNode(this.clues);
+    this.$cluesNode = this.cluesRef.current;
 
     const height = this.$cluesNode.scrollHeight - this.$cluesNode.clientHeight;
 
@@ -85,7 +85,7 @@ class Clues extends Component {
 
   scrollIntoView(clue) {
     const buffer = 100;
-    const node = findDOMNode(this[clue.id]);
+    const node = this.cluesRef.current[clue.id];
     const visible = node.offsetTop - buffer > this.$cluesNode.scrollTop
       && node.offsetTop + buffer
         < this.$cluesNode.scrollTop + this.$cluesNode.clientHeight;
