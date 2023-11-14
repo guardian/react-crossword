@@ -8,9 +8,9 @@
     Note: if you pass in an element, you must also specify an easing function.
 */
 
-import { createEasing } from 'lib/easing';
 import bonzo from 'bonzo';
 import fastdom from 'fastdom';
+import { createEasing } from './easing';
 
 const scrollTo = (
   offset,
@@ -33,7 +33,7 @@ const scrollTo = (
   }, duration);
 };
 
-const scrollToElement = (element, duration = 0, easeFn, container) => {
+const scrollToElement = (element, easeFn, container, duration = 0) => {
   const top = bonzo(element).offset().top;
   scrollTo(top, duration, easeFn, container);
 };

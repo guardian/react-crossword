@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ConfirmButton } from 'crosswords/confirm-button';
+import { ConfirmButton } from './confirm-button';
 
 const buttonClassName = 'button button--primary';
 const buttonCurrentClassName = 'button--crossword--current';
@@ -18,9 +18,7 @@ class Controls extends Component {
     controls.grid.unshift(
       <ConfirmButton
         className={`${buttonClassName} ${buttonGenericClassName}`}
-        onClick={this.props.crossword.onClearAll.bind(
-          this.props.crossword,
-        )}
+        onClick={this.props.crossword.onClearAll.bind(this.props.crossword)}
         key="clear"
         data-link-name="Clear all"
         text="Clear all"
@@ -31,9 +29,7 @@ class Controls extends Component {
       controls.grid.unshift(
         <ConfirmButton
           className={`${buttonClassName} ${buttonGenericClassName}`}
-          onClick={this.props.crossword.onSolution.bind(
-            this.props.crossword,
-          )}
+          onClick={this.props.crossword.onSolution.bind(this.props.crossword)}
           key="solution"
           data-link-name="Reveal all"
           text="Reveal all"
@@ -42,9 +38,7 @@ class Controls extends Component {
       controls.grid.unshift(
         <ConfirmButton
           className={`${buttonClassName} ${buttonGenericClassName}`}
-          onClick={this.props.crossword.onCheckAll.bind(
-            this.props.crossword,
-          )}
+          onClick={this.props.crossword.onCheckAll.bind(this.props.crossword)}
           key="checkAll"
           data-link-name="Check all"
           text="Check all"
@@ -63,7 +57,7 @@ class Controls extends Component {
           key="clear-single"
           data-link-name="Clear this"
         >
-                    Clear this
+          Clear this
         </button>,
       );
 
@@ -77,7 +71,7 @@ class Controls extends Component {
           key="anagram"
           data-link-name="Show anagram helper"
         >
-                    Anagram helper
+          Anagram helper
         </button>,
       );
 
@@ -85,25 +79,21 @@ class Controls extends Component {
         controls.clue.unshift(
           <button
             className={`${buttonClassName} ${buttonCurrentClassName}`}
-            onClick={this.props.crossword.onCheat.bind(
-              this.props.crossword,
-            )}
+            onClick={this.props.crossword.onCheat.bind(this.props.crossword)}
             key="cheat"
             data-link-name="Reveal this"
           >
-                        Reveal this
+            Reveal this
           </button>,
         );
         controls.clue.unshift(
           <button
             className={`${buttonClassName} ${buttonCurrentClassName}`}
-            onClick={this.props.crossword.onCheck.bind(
-              this.props.crossword,
-            )}
+            onClick={this.props.crossword.onCheck.bind(this.props.crossword)}
             key="check"
             data-link-name="Check this"
           >
-                        Check this
+            Check this
           </button>,
         );
       }

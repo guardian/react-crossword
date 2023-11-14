@@ -1,14 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Crossword from 'crosswords/crossword';
+import { createRoot } from 'react-dom/client';
+import Crossword from '../src/javascripts/crosswords/crossword';
 
-ReactDOM.render(<Crossword data={
-    {
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <Crossword
+    data={{
       id: 'simple/1',
       number: 1,
       name: 'Simple Crossword 1',
       date: 1542326400000,
-      instructions: "Numbers in the wordplay of the clues all have something in common and require translation",
+      instructions:
+        'Numbers in the wordplay of the clues all have something in common and require translation',
       entries: [
         {
           id: '1-across',
@@ -87,6 +90,6 @@ ReactDOM.render(<Crossword data={
         rows: 13,
       },
       crosswordType: 'quick',
-    }
-}
-/>, document.getElementById('root'));
+    }}
+  />,
+);

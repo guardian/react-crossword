@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import { easingFunctions, createEasing } from 'lib/easing';
+import { easingFunctions, createEasing } from './easing';
 
 const chance = new Chance();
 jest.useRealTimers();
@@ -11,13 +11,13 @@ const TESTS = {
   easeInOutQuad: [[0.3, 0.18], [0.5, 0.5], [2, -1], [3, -7]],
   easeInCubic: [[2, 8], [3, 27], [4, 64]],
   easeOutCubic: [[2, 0], [3, -7], [4, -26]],
-  easeInOutCubic: [[0.3, 0.108], [0.5, 0.5], [2, -3], [3, -31]],
+  easeInOutCubic: [[0.3, 0.10799999999999998], [0.5, 0.5], [2, -3], [3, -31]],
   easeInQuart: [[2, 16], [3, 81], [4, 256]],
   easeOutQuart: [[2, 0], [3, -15], [4, -80]],
   easeInOutQuart: [[0.3, 0.0648], [0.5, 0.5], [2, -7], [3, -127]],
   easeInQuint: [[2, 32], [3, 243], [4, 1024]],
   easeOutQuint: [[2, 0], [3, -31], [4, -242]],
-  easeInOutQuint: [[0.3, 0.03888], [0.5, 0.5], [2, -15], [3, -511]],
+  easeInOutQuint: [[0.3, 0.03887999999999999], [0.5, 0.5], [2, -15], [3, -511]],
 };
 
 describe('easing', () => {

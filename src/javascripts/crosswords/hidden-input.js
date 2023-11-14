@@ -8,6 +8,13 @@ class HiddenInput extends Component {
     };
   }
 
+  handleChange(event) {
+    this.props.crossword.insertCharacter(event.target.value);
+    this.setState({
+      value: '',
+    });
+  }
+
   onClick(event) {
     this.props.crossword.onClickHiddenInput(event);
   }
@@ -30,13 +37,6 @@ class HiddenInput extends Component {
 
   touchStart(event) {
     this.props.crossword.onClickHiddenInput(event);
-  }
-
-  handleChange(event) {
-    this.props.crossword.insertCharacter(event.target.value);
-    this.setState({
-      value: '',
-    });
   }
 
   render() {

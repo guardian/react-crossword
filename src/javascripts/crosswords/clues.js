@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
+// eslint-disable-next-line max-classes-per-file
+import React, { Component, createRef } from 'react';
 import bean from 'bean';
 import fastdom from 'fastdom';
-import { classNames } from 'crosswords/classNames';
-import { isBreakpoint } from 'lib/detect';
-import { scrollTo } from 'lib/scroller';
+import { classNames } from './classNames';
+import { isBreakpoint } from '../lib/detect';
+import { scrollTo } from '../lib/scroller';
 
 class Clue extends Component {
   onClick(e) {
@@ -24,8 +24,7 @@ class Clue extends Component {
             'crossword__clue--answered': this.props.hasAnswered,
             'crossword__clue--selected': this.props.isSelected,
             'crossword__clue--display-group-order':
-                            JSON.stringify(this.props.number)
-                            !== this.props.humanNumber,
+              JSON.stringify(this.props.number) !== this.props.humanNumber,
           })}
         >
           <div className="crossword__clue__number">
@@ -47,10 +46,11 @@ class Clues extends Component {
     this.state = {
       showGradient: true,
     };
+    this.cluesRef = createRef(this.clues);
   }
 
   componentDidMount() {
-    this.$cluesNode = findDOMNode(this.clues);
+    this.$cluesNode = this.cluesRef.current;
 
     const height = this.$cluesNode.scrollHeight - this.$cluesNode.clientHeight;
 
@@ -66,16 +66,16 @@ class Clues extends Component {
   }
 
   /**
-     * Scroll clues into view when they're activated (i.e. clicked in the grid)
-     */
+   * Scroll clues into view when they're activated (i.e. clicked in the grid)
+   */
   componentDidUpdate(prev) {
     if (
       isBreakpoint({
         min: 'tablet',
         max: 'leftCol',
       })
-            && (this.props.focussed
-                && (!prev.focussed || prev.focussed.id !== this.props.focussed.id))
+      && this.props.focussed
+      && (!prev.focussed || prev.focussed.id !== this.props.focussed.id)
     ) {
       fastdom.read(() => {
         this.scrollIntoView(this.props.focussed);
@@ -85,10 +85,10 @@ class Clues extends Component {
 
   scrollIntoView(clue) {
     const buffer = 100;
-    const node = findDOMNode(this[clue.id]);
+    const node = this.cluesRef.current[clue.id];
     const visible = node.offsetTop - buffer > this.$cluesNode.scrollTop
-            && node.offsetTop + buffer
-                < this.$cluesNode.scrollTop + this.$cluesNode.clientHeight;
+      && node.offsetTop + buffer
+        < this.$cluesNode.scrollTop + this.$cluesNode.clientHeight;
 
     if (!visible) {
       const offset = node.offsetTop - this.$cluesNode.clientHeight / 2;
@@ -98,9 +98,9 @@ class Clues extends Component {
 
   render() {
     const headerClass = 'crossword__clues-header';
-    const cluesByDirection = direction => this.props.clues
-      .filter(clue => clue.entry.direction === direction)
-      .map(clue => (
+    const cluesByDirection = (direction) => this.props.clues
+      .filter((clue) => clue.entry.direction === direction)
+      .map((clue) => (
         <Clue
           ref={(clueRef) => {
             this[clue.entry.id] = clueRef;
@@ -112,9 +112,7 @@ class Clues extends Component {
           clue={clue.entry.clue}
           hasAnswered={clue.hasAnswered}
           isSelected={clue.isSelected}
-          focusFirstCellInClueById={
-                            this.props.focusFirstCellInClueById
-                        }
+          focusFirstCellInClueById={this.props.focusFirstCellInClueById}
           setReturnPosition={() => {
             this.props.setReturnPosition(window.scrollY);
           }}

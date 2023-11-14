@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import closeCentralIcon from 'svgs/close.svg';
-import { cellsForClue, getAnagramClueData } from 'crosswords/helpers';
 import shuffle from 'lodash/shuffle';
+import closeCentralIcon from '../../../svgs/close.svg';
+import { cellsForClue, getAnagramClueData } from '../helpers';
 import { ClueInput } from './clue-input';
 import { CluePreview } from './clue-preview';
 import { Ring } from './ring';
@@ -25,19 +25,19 @@ class AnagramHelper extends Component {
   }
 
   /**
-     * Shuffle the letters in the user's input.
-     *
-     * First, create an array of input characters that have already been entered
-     * into the grid. Then build a new collection of letters, using the first
-     * array to flag letters that are already entered in the puzzle, and
-     * shuffle it.
-     *
-     */
+   * Shuffle the letters in the user's input.
+   *
+   * First, create an array of input characters that have already been entered
+   * into the grid. Then build a new collection of letters, using the first
+   * array to flag letters that are already entered in the puzzle, and
+   * shuffle it.
+   *
+   */
   // eslint-disable-next-line class-methods-use-this
   shuffleWord(word, entries) {
     const wordEntries = entries
-      .map(entry => entry.value.toLowerCase())
-      .filter(entry => word.includes(entry))
+      .map((entry) => entry.value.toLowerCase())
+      .filter((entry) => word.includes(entry))
       .filter(Boolean)
       .sort();
 
@@ -90,11 +90,9 @@ class AnagramHelper extends Component {
   }
 
   entries() {
-    const cells = cellsForClue(
-      this.props.entries,
-      this.props.focussedEntry,
-    );
-    return cells.map(coords => Object.assign({}, this.props.grid[coords.x][coords.y], {
+    const cells = cellsForClue(this.props.entries, this.props.focussedEntry);
+    return cells.map((coords) => ({
+      ...this.props.grid[coords.x][coords.y],
       key: `${coords.x},${coords.y}`,
     }));
   }
@@ -125,6 +123,7 @@ class AnagramHelper extends Component {
         data-link-name="Anagram Helper"
       >
         <div className="crossword__anagram-helper-inner">{inner}</div>
+        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button
           className="button button--large button--tertiary crossword__anagram-helper-close"
           onClick={this.props.close.bind(this.props.crossword)}
@@ -138,7 +137,7 @@ class AnagramHelper extends Component {
           onClick={this.reset.bind(this)}
           data-link-name="Start Again"
         >
-                    start again
+          start again
         </button>
         <button
           className={`button button--large ${
@@ -147,7 +146,7 @@ class AnagramHelper extends Component {
           onClick={this.shuffle.bind(this)}
           data-link-name="Shuffle"
         >
-                    shuffle
+          shuffle
         </button>
         <CluePreview
           clue={clue}

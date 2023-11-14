@@ -2,16 +2,6 @@ import sortBy from 'lodash/sortBy';
 
 import { AnagramHelper } from './main';
 
-jest.mock('react', () => ({
-  Component: function Component() {},
-}));
-
-jest.mock('react-dom', () => ({
-  findDOMNode: () => ({
-    focus: () => {},
-  }),
-}));
-
 const CASES = [
   {
     entries: ['', '', '', '', 'l', '', 'e'],
@@ -50,10 +40,10 @@ const CASES = [
 
 describe('Anagram Helper', () => {
   test('marks the correct letters as entered', () => {
-    const sort = x => x.value + x.entered.toString();
+    const sort = (x) => x.value + x.entered.toString();
 
     CASES.forEach((testCase) => {
-      const entries = testCase.entries.map(e => ({ value: e }));
+      const entries = testCase.entries.map((e) => ({ value: e }));
       const result = new AnagramHelper().shuffleWord(
         testCase.word,
         entries,

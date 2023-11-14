@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
+import React, { Component, createRef } from 'react';
 
 class ClueInput extends Component {
+  constructor() {
+    super();
+    this.inputRef = createRef(null);
+  }
+
   componentDidMount() {
-    const el = findDOMNode(this);
+    const el = this.inputRef.current;
 
     if (el) {
       el.focus();
@@ -11,7 +15,7 @@ class ClueInput extends Component {
   }
 
   componentDidUpdate() {
-    const el = findDOMNode(this);
+    const el = this.inputRef.current;
 
     // focus on reset
     if (this.props.value === '' && el) {
@@ -27,7 +31,7 @@ class ClueInput extends Component {
   }
 
   onKeyDown(e) {
-    const el = findDOMNode(this);
+    const el = this.inputRef.current;
 
     if (e.keyCode === 13 && el) {
       el.blur();

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { classNames } from 'crosswords/classNames';
+import { classNames } from './classNames';
 
 const timeout = 2000;
 
@@ -36,9 +36,7 @@ class ConfirmButton extends Component {
 
     const classes = {};
     const className = classNames(
-      ((classes[
-        'crossword__controls__button--confirm'
-      ] = this.state.confirming),
+      ((classes['crossword__controls__button--confirm'] = this.state.confirming),
       (classes[this.props.className] = true),
       classes),
     );
@@ -48,6 +46,7 @@ class ConfirmButton extends Component {
       className,
     };
 
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <button {...props}>{inner}</button>;
   }
 }

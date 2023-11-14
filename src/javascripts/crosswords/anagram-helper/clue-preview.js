@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Checks a object in the form{",":[4,7]}
 const checkIfLetterHasSeparator = (locations, letterIndex) => {
   const spaces = locations[','];
-  const letterHasBoundary = separators => separators.includes(letterIndex);
+  const letterHasBoundary = (separators) => separators.includes(letterIndex);
 
   if (spaces && letterHasBoundary(spaces)) {
     return 'crossword__anagram-helper__cell crossword__anagram-helper__cell--with-space';
@@ -29,7 +29,7 @@ class CluePreview extends Component {
      * display the entries as they are, preserving any blank spaces.
      */
   getEntries() {
-    const unsolved = this.props.letters.filter(l => !l.entered);
+    const unsolved = this.props.letters.filter((l) => !l.entered);
 
     return this.props.entries.map((entry) => {
       entry.solved = !!entry.value;
@@ -38,7 +38,7 @@ class CluePreview extends Component {
         ? (entry.value && entry) || unsolved.shift()
         : entry;
 
-      return Object.assign({}, { key: entry.key }, returnVal);
+      return { key: entry.key, ...returnVal };
     });
   }
 

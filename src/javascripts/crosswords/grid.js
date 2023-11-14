@@ -1,8 +1,8 @@
 import React from 'react';
-import { gridSize, clueMapKey } from 'crosswords/helpers';
-import { constants } from 'crosswords/constants';
-import GridCell from 'crosswords/cell';
-import { classNames } from 'crosswords/classNames';
+import { gridSize, clueMapKey } from './helpers';
+import { constants } from './constants';
+import GridCell from './cell';
+import { classNames } from './classNames';
 
 // Position at end of previous cell
 const createWordSeparator = (x, y, direction) => {
@@ -21,7 +21,8 @@ const createWordSeparator = (x, y, direction) => {
         height={constants.cellSize}
       />
     );
-  } if (direction === 'down') {
+  }
+  if (direction === 'down') {
     const height = 1;
     return (
       <rect
@@ -55,7 +56,8 @@ const createHyphenSeparator = (x, y, direction) => {
         height={height}
       />
     );
-  } if (direction === 'down') {
+  }
+  if (direction === 'down') {
     width = 1;
     height = constants.cellSize / 4;
     return (
@@ -74,13 +76,14 @@ const createSeparator = (x, y, separatorDescription) => {
   if (separatorDescription) {
     if (separatorDescription.separator === ',') {
       return createWordSeparator(x, y, separatorDescription.direction);
-    } if (separatorDescription.separator === '-') {
+    }
+    if (separatorDescription.separator === '-') {
       return createHyphenSeparator(x, y, separatorDescription.direction);
     }
   }
 };
 
-export const Grid = (props) => {
+export function Grid(props) {
   const getSeparators = (x, y) => props.separators[clueMapKey(x, y)];
 
   const handleSelect = (x, y) => props.crossword.onSelect(x, y);
@@ -90,34 +93,32 @@ export const Grid = (props) => {
   const cells = [];
   let separators = [];
 
-  const range = n => Array.from({ length: n }, (value, key) => key);
+  const range = (n) => Array.from({ length: n }, (value, key) => key);
 
   // This is needed to appease ESLint (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md#false-positives-sfc)
   const cellsIn = props.cells;
 
-  range(props.rows).forEach(y => range(props.columns).forEach((x) => {
+  range(props.rows).forEach((y) => range(props.columns).forEach((x) => {
     const cellProps = cellsIn[x][y];
 
     if (cellProps.isEditable) {
       const isHighlighted = props.crossword.isHighlighted(x, y);
       cells.push(
         <GridCell
-          {...Object.assign(
-            {},
-            cellProps,
-            {
-              handleSelect,
-              x,
-              y,
-              key: `cell_${x}_${y}`,
-              isHighlighted,
-              isFocussed:
-                                    props.focussedCell
-                                    && x === props.focussedCell.x
-                                    && y === props.focussedCell.y,
-            },
-            this,
-          )}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+          {...{
+            ...cellProps,
+            handleSelect,
+            x,
+            y,
+            key: `cell_${x}_${y}`,
+            isHighlighted,
+            isFocussed:
+                props.focussedCell
+                && x === props.focussedCell.x
+                && y === props.focussedCell.y,
+            ...this,
+          }}
         />,
       );
 
@@ -146,4 +147,4 @@ export const Grid = (props) => {
       <g className="crossword__grid__separators">{separators}</g>
     </svg>
   );
-};
+}
