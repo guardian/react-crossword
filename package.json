@@ -17,6 +17,7 @@
     "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
+    "@changesets/cli": "^2.26.2",
     "@parcel/transformer-sass": "2.10.0",
     "babel-jest": "^29.7.0",
     "chance": "1.1.11",
@@ -62,7 +63,8 @@
     "sass-lint": "sass-lint -v",
     "test": "yarn eslint && yarn jest && yarn sass-lint",
     "build": "parcel build",
-    "serve": "parcel examples/index.html"
+    "serve": "parcel examples/index.html",
+    "release": "npx changeset"
   },
   "files": [
     "lib"

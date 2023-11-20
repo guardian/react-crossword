@@ -1,0 +1,24 @@
+# This action runs every day at 6 AM and on every push
+# If the branch it's running on is main then it will run snyk monitor (reports vulnerabilities to snyk.io)
+# Otherwise it will run snyk test
+# NOTE: This repository uses master as the default branch (this file will need updating when it moves to main)
+name: Snyk
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  name: Create Release Pull Request or Publish to npm
+    id: changesets
+    uses: changesets/action@v1
+    with:
+      publish: npx changeset publish
+      title: ":butterfly: Release package updates"
+      commit: "Bump package version"
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
