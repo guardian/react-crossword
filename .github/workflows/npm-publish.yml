@@ -1,5 +1,10 @@
 name: Release
 
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: write
+
 on:
   push:
     branches:
