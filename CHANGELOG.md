@@ -1,5 +1,11 @@
 # @guardian/react-crossword
 
+## 1.3.0
+
+### Minor Changes
+
+- 91dec91: Run build script before publishing
+
 ## 1.2.0
 
 ### Minor Changes
