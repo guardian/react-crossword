@@ -46,7 +46,7 @@ class Clues extends Component {
     this.state = {
       showGradient: true,
     };
-    this.cluesRef = createRef(this.clues);
+    this.cluesRef = createRef();
   }
 
   componentDidMount() {
@@ -127,9 +127,7 @@ class Clues extends Component {
       >
         <div
           className="crossword__clues"
-          ref={(clues) => {
-            this.clues = clues;
-          }}
+          ref={this.cluesRef}
         >
           <div className="crossword__clues--across">
             <h3 className={headerClass}>Across</h3>
