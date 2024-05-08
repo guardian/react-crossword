@@ -791,7 +791,7 @@ class Crossword extends Component {
             <header className="instructions__title">
               Special instructions
             </header>
-            {this.instructions}
+            <span dangerouslySetInnerHTML={{ __html: this.instructions }} />
           </div>
         )}
         <Clues
