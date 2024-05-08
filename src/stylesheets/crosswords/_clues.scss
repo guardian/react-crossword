@@ -3,6 +3,7 @@
     @include fs-textSans(5);
     width: 100%;
     clear: both;
+    white-space: pre-line;
 
     .instructions__title { 
         font-weight: bold;
