@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import shuffle from 'lodash/shuffle';
-import closeCentralIcon from '../../../svgs/close.svg';
+import closeCentralIcon from 'bundle-text:../../../svgs/close.svg';
 import { cellsForClue, getAnagramClueData } from '../helpers';
 import { ClueInput } from './clue-input';
 import { CluePreview } from './clue-preview';
