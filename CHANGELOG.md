@@ -1,5 +1,14 @@
 # @guardian/react-crossword
 
+## 1.3.1
+
+### Patch Changes
+
+- 1573a38: add quick-cryptic grid size value
+- 7544959: Display multiline instructions on multiple lines
+- 3142d50: Support formatted instructions
+- 1ecbf7f: Fix SVG import and ref usage
+
 ## 1.3.0
 
 ### Minor Changes
