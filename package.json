@@ -63,18 +63,11 @@
     "eslint": "eslint --color src/javascripts examples *.js",
     "sass-lint": "sass-lint -v",
     "test": "yarn eslint && yarn jest && yarn sass-lint",
-    "build": "parcel build ./src/javascripts/crosswords/crossword.js --dist-dir ./lib",
+    "build": "parcel build",
     "serve": "parcel examples/index.html",
     "release": "npx changeset"
   },
-  "files": [
-    "lib"
-  ],
-  "targets": {
-    "main": false
-  },
-  "main": "lib/crossword.js",
-  "browserslist": "> 0.5%",
+  "module": "./lib/index.js",
   "source": "src/javascripts/crosswords/crossword.js",
   "description": "Guardian React Crossword"
 }

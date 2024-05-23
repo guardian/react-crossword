@@ -1,86 +1,87 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import Crossword from '../src/javascripts/crosswords/crossword';
+import React from "react";
+import { createRoot } from "react-dom/client";
+// import Crossword from '../src/javascripts/crosswords/crossword';
+import Crossword from "../lib";
 
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById("root"));
 root.render(
   <Crossword
     data={{
-      id: 'simple/1',
+      id: "simple/1",
       number: 1,
-      name: 'Simple Crossword 1',
+      name: "Simple Crossword 1",
       date: 1542326400000,
       instructions:
-        'Numbers in the wordplay of the clues all have something in common and require translation',
+        "Numbers in the wordplay of the clues all have something in common and require translation",
       entries: [
         {
-          id: '1-across',
+          id: "1-across",
           number: 1,
-          humanNumber: '1',
-          clue: 'Toy on a string (2-2)',
-          direction: 'across',
+          humanNumber: "1",
+          clue: "Toy on a string (2-2)",
+          direction: "across",
           length: 4,
-          group: ['1-across'],
+          group: ["1-across"],
           position: { x: 0, y: 0 },
           separatorLocations: {
-            '-': [2],
+            "-": [2],
           },
-          solution: 'YOYO',
+          solution: "YOYO",
         },
         {
-          id: '2-across',
+          id: "2-across",
           number: 2,
-          humanNumber: '2',
-          clue: 'Have a rest (3,4)',
-          direction: 'across',
+          humanNumber: "2",
+          clue: "Have a rest (3,4)",
+          direction: "across",
           length: 7,
-          group: ['2-across'],
+          group: ["2-across"],
           position: { x: 0, y: 2 },
           separatorLocations: {
-            ',': [3],
+            ",": [3],
           },
-          solution: 'LIEDOWN',
+          solution: "LIEDOWN",
         },
         {
-          id: '1-down',
+          id: "1-down",
           number: 1,
-          humanNumber: '1',
-          clue: 'Colour (6)',
-          direction: 'down',
+          humanNumber: "1",
+          clue: "Colour (6)",
+          direction: "down",
           length: 6,
-          group: ['1-down'],
+          group: ["1-down"],
           position: { x: 0, y: 0 },
           separatorLocations: {},
-          solution: 'YELLOW',
+          solution: "YELLOW",
         },
         {
-          id: '3-down',
+          id: "3-down",
           number: 3,
-          humanNumber: '3',
-          clue: 'Bits and bobs (4,3,4)',
-          direction: 'down',
+          humanNumber: "3",
+          clue: "Bits and bobs (4,3,4)",
+          direction: "down",
           length: 7,
-          group: ['3-down', '4-down'],
+          group: ["3-down", "4-down"],
           position: { x: 3, y: 0 },
           separatorLocations: {
-            ',': [4],
+            ",": [4],
           },
-          solution: 'ODDSAND',
+          solution: "ODDSAND",
         },
         {
-          id: '4-down',
+          id: "4-down",
           number: 4,
-          humanNumber: '4',
-          clue: 'See 3 down',
-          direction: 'down',
+          humanNumber: "4",
+          clue: "See 3 down",
+          direction: "down",
           length: 4,
-          group: ['3-down', '4-down'],
+          group: ["3-down", "4-down"],
           position: {
             x: 6,
             y: 1,
           },
           separatorLocations: {},
-          solution: 'ENDS',
+          solution: "ENDS",
         },
       ],
       solutionAvailable: true,
@@ -89,7 +90,7 @@ root.render(
         cols: 13,
         rows: 13,
       },
-      crosswordType: 'quick',
+      crosswordType: "quick",
     }}
-  />,
+  />
 );
