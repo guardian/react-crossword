@@ -1,3 +1,23 @@
+@mixin crossword-formatting {
+    /*
+     * Reapply b, i, sub & sup styles which were disabled by reset
+     */
+    b {
+        font-weight: bold;
+    }
+    i {
+        font-style: italic;
+    }
+    sup {
+        font-size: smaller;
+        vertical-align: super;
+    }
+    sub {
+        font-size: smaller;
+        vertical-align: sub;
+    }
+}
+
 .crossword__instructions {
     font-family: $f-sans-serif-text;
     @include fs-textSans(5);
@@ -8,6 +28,8 @@
     .instructions__title { 
         font-weight: bold;
     }
+
+    @include crossword-formatting;
 
     @include mq(tablet) {
         clear: none;
@@ -68,6 +90,10 @@
 .crossword__clue__number,
 .crossword__clue__text {
     display: table-cell;
+}
+
+.crossword__clue__text {
+    @include crossword-formatting;
 }
 
 .crossword__clue__number {
