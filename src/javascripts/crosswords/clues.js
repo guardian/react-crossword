@@ -1,6 +1,5 @@
 // eslint-disable-next-line max-classes-per-file
 import React, { Component, createRef } from 'react';
-import bean from 'bean';
 import fastdom from 'fastdom';
 import { classNames } from './classNames';
 import { isBreakpoint } from '../lib/detect';
@@ -54,8 +53,8 @@ class Clues extends Component {
 
     const height = this.$cluesNode.scrollHeight - this.$cluesNode.clientHeight;
 
-    bean.on(this.$cluesNode, 'scroll', (e) => {
-      const showGradient = height - e.currentTarget.scrollTop > 25;
+    this.$cluesNode.addEventListener('scroll', (event) => {
+      const showGradient = height - event.currentTarget.scrollTop > 25;
 
       if (this.state.showGradient !== showGradient) {
         this.setState({

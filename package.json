@@ -4,7 +4,6 @@
   "author": "The Guardian, Chris Zetter",
   "private": false,
   "dependencies": {
-    "bean": "~1.0.14",
     "bonzo": "~2.0.0",
     "fastdom": "1.0.12",
     "lodash": "^4.17.21",
