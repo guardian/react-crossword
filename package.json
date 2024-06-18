@@ -4,38 +4,38 @@
   "author": "The Guardian, Chris Zetter",
   "private": false,
   "dependencies": {
-    "bean": "~1.0.14",
-    "bonzo": "~2.0.0",
+    "bean": "1.0.14",
+    "bonzo": "2.0.0",
     "fastdom": "1.0.11",
-    "lodash": "^4.17.21",
+    "lodash": "4.17.21",
     "qwery": "4.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "wolfy87-eventemitter": "~5.2.9"
+    "wolfy87-eventemitter": "5.2.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/preset-env": "^7.23.2",
-    "@babel/preset-react": "^7.22.15",
-    "@changesets/cli": "^2.26.2",
-    "@parcel/transformer-inline-string": "2.10.0",
-    "@parcel/transformer-sass": "2.10.0",
-    "babel-jest": "^29.7.0",
+    "@babel/core": "7.23.2",
+    "@babel/preset-env": "7.23.2",
+    "@babel/preset-react": "7.22.15",
+    "@changesets/cli": "2.26.2",
+    "@parcel/transformer-inline-string": "2.12.0",
+    "@parcel/transformer-sass": "2.12.0",
+    "babel-jest": "29.7.0",
     "chance": "1.1.11",
-    "eslint": "^8.51.0",
+    "eslint": "8.51.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.33.2",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "jest-environment-jsdom-global": "^4.0.0",
-    "node-sass": "^9.0.0",
-    "parcel": "2.10.0",
-    "process": "^0.11.10",
-    "sass": "^1.69.3",
-    "sass-lint": "~1.13.1",
-    "sass-mq": "~6.0.0"
+    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-react": "7.33.2",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
+    "jest-environment-jsdom-global": "4.0.0",
+    "node-sass": "9.0.0",
+    "parcel": "2.12.0",
+    "process": "0.11.10",
+    "sass": "1.69.3",
+    "sass-lint": "1.13.1",
+    "sass-mq": "6.0.0"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.3"
@@ -63,14 +63,18 @@
     "eslint": "eslint --color src/javascripts examples *.js",
     "sass-lint": "sass-lint -v",
     "test": "yarn eslint && yarn jest && yarn sass-lint",
-    "build": "parcel build",
+    "build": "parcel build ./src/javascripts/crosswords/crossword.js --dist-dir ./lib",
     "serve": "parcel examples/index.html",
     "release": "npx changeset"
   },
   "files": [
     "lib"
   ],
-  "main": "lib/index.js",
+  "targets": {
+    "main": false
+  },
+  "main": "lib/crossword.js",
+  "browserslist": "> 0.5%",
   "source": "src/javascripts/crosswords/crossword.js",
   "description": "Guardian React Crossword"
 }
