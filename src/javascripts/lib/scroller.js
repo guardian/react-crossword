@@ -8,28 +8,28 @@
     Note: if you pass in an element, you must also specify an easing function.
 */
 
-import bonzo from 'bonzo';
-import fastdom from 'fastdom';
-import { createEasing } from './easing';
+import bonzo from "bonzo";
+import fastdom from "fastdom";
+import { createEasing } from "./easing";
 
 const scrollTo = (
   offset,
   duration = 0,
-  easeFn = 'easeOutQuad',
-  container = document.body,
+  easeFn = "easeOutQuad",
+  container = document.body
 ) => {
   const $container = bonzo(container);
   const from = $container.scrollTop();
   const distance = offset - from;
   const ease = createEasing(easeFn, duration);
   const scrollFn = () => {
-    fastdom.write(() => $container.scrollTop(from + ease() * distance));
+    fastdom.mutate(() => $container.scrollTop(from + ease() * distance));
   };
   const interval = setInterval(scrollFn, 15);
 
   setTimeout(() => {
     clearInterval(interval);
-    fastdom.write(() => $container.scrollTop(offset));
+    fastdom.mutate(() => $container.scrollTop(offset));
   }, duration);
 };
 
