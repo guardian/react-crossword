@@ -4351,10 +4351,10 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
-fastdom@1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/fastdom/-/fastdom-1.0.11.tgz#f22984f9df6b9a6081e5ce2e49cfb5525daf198a"
-  integrity sha512-jl9MwXDFxhg354W4E3s1UMsLh3HWFuVMQiRUlXpHckcHRXQvUe76yzBf1Z7b+x5Ci4TUJ1KmynI9alGUXG95IQ==
+fastdom@1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/fastdom/-/fastdom-1.0.12.tgz#ae43d55af017252ae499b2e186511ab97412de39"
+  integrity sha512-LB+xjSTEbjHE1cWsxu+tN2Xqr1kpi+V9aADI7sVM5ZMaXyYGPHULQMzpJMYqOTULK/73pUkWVzzObFRBkPr+hg==
   dependencies:
     strictdom "^1.0.1"
 

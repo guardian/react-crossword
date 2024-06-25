@@ -6,7 +6,7 @@
   "dependencies": {
     "bean": "~1.0.14",
     "bonzo": "~2.0.0",
-    "fastdom": "1.0.11",
+    "fastdom": "1.0.12",
     "lodash": "^4.17.21",
     "qwery": "4.0.0",
     "react": "18.2.0",
@@ -70,7 +70,7 @@
   "files": [
     "lib"
   ],
-  "main": "lib/index.js",
+  "module": "lib/index.js",
   "source": "src/javascripts/crosswords/crossword.js",
   "description": "Guardian React Crossword"
 }
