@@ -1,5 +1,11 @@
 # @guardian/react-crossword
 
+## 2.0.0
+
+### Major Changes
+
+- cc1e576: Makes Fastdom work again and makes a styling change that may break non Edition styling
+
 ## 1.3.1
 
 ### Patch Changes
