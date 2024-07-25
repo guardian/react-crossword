@@ -34,8 +34,9 @@
     "parcel": "2.10.0",
     "process": "^0.11.10",
     "sass": "^1.69.3",
-    "sass-lint": "~1.13.1",
-    "sass-mq": "~6.0.0"
+    "sass-mq": "~6.0.0",
+    "stylelint": "^16.7.0",
+    "stylelint-config-standard-scss": "^13.1.0"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.3"
@@ -61,7 +62,7 @@
   "scripts": {
     "eslint-fix": "eslint --color --fix src/javascripts examples *.js",
     "eslint": "eslint --color src/javascripts examples *.js",
-    "sass-lint": "sass-lint -v",
+    "sass-lint": "stylelint '**/*.scss'",
     "test": "yarn eslint && yarn jest && yarn sass-lint",
     "build": "parcel build",
     "serve": "parcel examples/index.html",
