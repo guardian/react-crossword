@@ -1,5 +1,12 @@
 # @guardian/react-crossword
 
+## 2.0.1
+
+### Patch Changes
+
+- e272e51: Tackled all remaining dependabot issues
+- 0a5d815: Swap sass-lint for stylelint to remove a critical vulnerability
+
 ## 2.0.0
 
 ### Major Changes
