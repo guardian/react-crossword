@@ -1,5 +1,11 @@
 # @guardian/react-crossword
 
+## 2.0.2
+
+### Patch Changes
+
+- dd9390a: Remove bean and update fastdom usages
+
 ## 2.0.1
 
 ### Patch Changes
