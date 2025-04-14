@@ -17,7 +17,7 @@ root.render(
           id: '1-across',
           number: 1,
           humanNumber: '1',
-          clue: 'Toy on a string (2-2)',
+          clue: '<i>Toy</i> on a string (2-2)',
           direction: 'across',
           length: 4,
           group: ['1-across'],
